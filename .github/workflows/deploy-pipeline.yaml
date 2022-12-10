@@ -57,9 +57,9 @@ jobs:
         with:
           token: ${{secrets.token}}
           tag: v1.0.0
-          files: ${{ github.sha }}.zip
+          name: v1.0.0 - Test Release
           
       - name: Github Release
         uses: elgohr/Github-Release-Action@v4
         with:
-          title: "Latest Release"
+          title: "Test Release"
