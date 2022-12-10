@@ -47,19 +47,19 @@ jobs:
           
   publish:
     runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        
-      - name: Create/Update Github Release
-        uses: mini-bomba/create-github-release@v1.1.2
+    steps:        
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
-          token: ${{secrets.token}}
-          tag: v1.0.0
-          name: v1.0.0 - Test Release
+          tag_name: ${{ github.run_number }}
+          release_name: Release from ${{ github.run_number }} - Test Release
+          body: New release from ${{ github.sh }}
+          draft: false
+          prerelease: false
           
-      - name: Github Release
-        uses: elgohr/Github-Release-Action@v4
-        with:
-          title: "Test Release"
+#       - name: Github Release
+#         uses: elgohr/Github-Release-Action@v4
+#         with:
+#           title: "Test Release"
