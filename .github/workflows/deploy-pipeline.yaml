@@ -58,3 +58,8 @@ jobs:
           token: ${{secrets.token}}
           tag: v1.0.0
           files: ${{ github.sha }}.zip
+          
+      - name: Github Release
+        uses: elgohr/Github-Release-Action@v4
+        with:
+          title: "Latest Release"
